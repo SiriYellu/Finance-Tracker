@@ -6,9 +6,11 @@ import WealthChart from './components/WealthChart'
 import ExpenseTracker from './components/ExpenseTracker'
 import MarketHeader from './components/MarketHeader'
 import AIAdvisor from './components/AIAdvisor'
-import { Sun, Moon, TrendingUp, Eye, Zap, PieChart, BarChart2, CreditCard, Brain } from 'lucide-react'
+import QuickInvest from './components/QuickInvest'
+import { Sun, Moon, TrendingUp, Eye, Zap, PieChart, BarChart2, CreditCard, Brain, Calculator } from 'lucide-react'
 
 const TABS = [
+  { id: 'quick', label: 'Quick Invest', Icon: Calculator, highlight: true },
   { id: 'watchlist', label: 'Watchlist', Icon: Eye },
   { id: 'spinoff', label: 'Breakouts', Icon: Zap },
   { id: 'portfolio', label: 'Portfolio', Icon: PieChart },
@@ -18,7 +20,7 @@ const TABS = [
 ]
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('watchlist')
+  const [activeTab, setActiveTab] = useState('quick')
   const [dark, setDark] = useState(() => {
     const saved = localStorage.getItem('theme')
     return saved ? saved === 'dark' : true
@@ -67,6 +69,7 @@ export default function App() {
         </div>
       </header>
       <main className="max-w-7xl mx-auto px-4 py-6">
+        {activeTab === 'quick' && <QuickInvest />}
         {activeTab === 'watchlist' && <StockWatchlist />}
         {activeTab === 'spinoff' && <SpinoffTracker />}
         {activeTab === 'portfolio' && <PortfolioTracker />}
