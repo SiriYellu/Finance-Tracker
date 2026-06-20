@@ -378,7 +378,7 @@ export default function QuickInvest() {
         {/* Summary 3 cards */}
         <div className="grid grid-cols-3 gap-3 mt-4">
           {[
-            { label: 'You Invest', value: fmt(totalInvested), sub: monthly ? `$${amount}/month`, color: 'text-gray-800 dark:text-white' },
+            { label: 'You Invest', value: fmt(totalInvested), sub: monthly ? `$${amount}/month` : 'one-time', color: 'text-gray-800 dark:text-white' },
             { label: `After ${horizon} Years`, value: fmt(finalValue), sub: `${(selectedInv.annualReturn * 100).toFixed(0)}% avg/yr`, color: 'text-emerald-500' },
             { label: 'Total Profit', value: `+${fmt(Math.max(0, totalGain))}`, sub: `${gainPct}% gain`, color: 'text-blue-500' },
           ].map(s => (
