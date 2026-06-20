@@ -7,7 +7,8 @@ import ExpenseTracker from './components/ExpenseTracker'
 import MarketHeader from './components/MarketHeader'
 import AIAdvisor from './components/AIAdvisor'
 import QuickInvest from './components/QuickInvest'
-import { Sun, Moon, TrendingUp, Eye, Zap, PieChart, BarChart2, CreditCard, Brain, Calculator } from 'lucide-react'
+import HowToInvest from './components/HowToInvest'
+import { Sun, Moon, TrendingUp, Eye, Zap, PieChart, BarChart2, CreditCard, Brain, Calculator, BookOpen } from 'lucide-react'
 
 const TABS = [
   { id: 'quick', label: 'Quick Invest', Icon: Calculator, highlight: true },
@@ -17,6 +18,7 @@ const TABS = [
   { id: 'wealth', label: 'Wealth', Icon: BarChart2 },
   { id: 'expenses', label: 'Expenses', Icon: CreditCard },
   { id: 'ai', label: 'AI Advisor', Icon: Brain, highlight: true },
+  { id: 'howto', label: 'How to Invest', Icon: BookOpen },
 ]
 
 export default function App() {
@@ -76,6 +78,7 @@ export default function App() {
         {activeTab === 'wealth' && <WealthChart />}
         {activeTab === 'expenses' && <ExpenseTracker />}
         {activeTab === 'ai' && <AIAdvisor />}
+        {activeTab === 'howto' && <HowToInvest />}
       </main>
     </div>
   )
