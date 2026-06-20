@@ -5,7 +5,8 @@ import PortfolioTracker from './components/PortfolioTracker'
 import WealthChart from './components/WealthChart'
 import ExpenseTracker from './components/ExpenseTracker'
 import MarketHeader from './components/MarketHeader'
-import { Sun, Moon, TrendingUp, Eye, Zap, PieChart, BarChart2, CreditCard } from 'lucide-react'
+import AIAdvisor from './components/AIAdvisor'
+import { Sun, Moon, TrendingUp, Eye, Zap, PieChart, BarChart2, CreditCard, Brain } from 'lucide-react'
 
 const TABS = [
   { id: 'watchlist', label: 'Watchlist', Icon: Eye },
@@ -13,6 +14,7 @@ const TABS = [
   { id: 'portfolio', label: 'Portfolio', Icon: PieChart },
   { id: 'wealth', label: 'Wealth', Icon: BarChart2 },
   { id: 'expenses', label: 'Expenses', Icon: CreditCard },
+  { id: 'ai', label: 'AI Advisor', Icon: Brain, highlight: true },
 ]
 
 export default function App() {
@@ -45,13 +47,15 @@ export default function App() {
           </div>
           <MarketHeader />
           <nav className="flex gap-1 overflow-x-auto pb-px">
-            {TABS.map(({ id, label, Icon }) => (
+            {TABS.map(({ id, label, Icon, highlight }) => (
               <button
                 key={id}
                 onClick={() => setActiveTab(id)}
                 className={`flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium whitespace-nowrap border-b-2 transition-colors ${
                   activeTab === id
                     ? 'border-emerald-500 text-emerald-600 dark:text-emerald-400'
+                    : highlight
+                    ? 'border-transparent text-purple-500 hover:text-purple-600 dark:text-purple-400'
                     : 'border-transparent text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
                 }`}
               >
@@ -68,6 +72,7 @@ export default function App() {
         {activeTab === 'portfolio' && <PortfolioTracker />}
         {activeTab === 'wealth' && <WealthChart />}
         {activeTab === 'expenses' && <ExpenseTracker />}
+        {activeTab === 'ai' && <AIAdvisor />}
       </main>
     </div>
   )
